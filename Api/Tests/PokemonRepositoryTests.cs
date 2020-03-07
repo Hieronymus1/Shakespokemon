@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using Shakespokemon.Core;
-using Shakespokemon.DataAccess;
+using Shakespokemon.Api.DataAccess;
 
 namespace Shakespokemon.Tests
 {

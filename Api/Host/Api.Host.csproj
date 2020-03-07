@@ -2,22 +2,23 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Shakespokemon.Host</RootNamespace>
-    <AssemblyName>Shakespokemon.Host</AssemblyName>
+    <RootNamespace>Shakespokemon.Api.Host</RootNamespace>
+    <AssemblyName>Shakespokemon.Api.Host</AssemblyName>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <DocumentationFile>Shakespokemon.Host.XML</DocumentationFile>
+    <DocumentationFile>Shakespokemon.Api.Host.XML</DocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Update="Shakespokemon.Host.XML">
+    <Content Update="Shakespokemon.Api.Host.XML">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>  
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+    <ProjectReference Include="..\..\Core\Core.csproj" />
+    <ProjectReference Include="..\Core\Api.Core.csproj" />
+    <ProjectReference Include="..\DataAccess\Api.DataAccess.csproj" />
   </ItemGroup>
 
   <ItemGroup>

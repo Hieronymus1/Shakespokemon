@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Shakespokemon.Tests</RootNamespace>
-    <AssemblyName>Shakespokemon.Tests</AssemblyName>
+    <RootNamespace>Shakespokemon.Api.Tests</RootNamespace>
+    <AssemblyName>Shakespokemon.Api.Tests</AssemblyName>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="../Host/Shakespokemon.Host.XML" Link="Shakespokemon.Host.XML" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../Host/Shakespokemon.Api.Host.XML" Link="Shakespokemon.Api.Host.XML" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,9 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Host\Host.csproj" />
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
-    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Host\Api.Host.csproj" />
+    <ProjectReference Include="..\DataAccess\Api.DataAccess.csproj" />
+    <ProjectReference Include="..\Core\Api.Core.csproj" />
+    <ProjectReference Include="..\..\Core\Core.csproj" />
   </ItemGroup>
 
 </Project>

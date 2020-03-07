@@ -5,7 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Net;
 using System.Net.Http;
 using Shakespokemon.Core;
-using Shakespokemon.Host;
+using Shakespokemon.Api.Core;
+using Shakespokemon.Api.Host;
 using Newtonsoft.Json;
 
 namespace Shakespokemon.Tests
@@ -20,7 +21,7 @@ namespace Shakespokemon.Tests
         {
             _repositoryMock = new Mock<IPokemonRepository>();
 
-            var factory = new WebApplicationFactory<Shakespokemon.Host.Startup>()
+            var factory = new WebApplicationFactory<Startup>()
                 .WithWebHostBuilder(builder =>
                 {
                     builder.ConfigureServices(services => 

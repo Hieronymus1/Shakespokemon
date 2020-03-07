@@ -1,7 +1,8 @@
+using Shakespokemon.Api.Core;
 using Shakespokemon.Core;
 using LiteDB;
 
-namespace Shakespokemon.DataAccess
+namespace Shakespokemon.Api.DataAccess
 {
     public class PokemonRepository : IPokemonRepository
     {

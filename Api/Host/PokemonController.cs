@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Shakespokemon.Api.Core;
 using Shakespokemon.Core;
 
-namespace Shakespokemon.Host
+namespace Shakespokemon.Api.Host
 {
     public class PokemonController : Controller
     {

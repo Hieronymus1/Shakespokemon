@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 
-namespace Shakespokemon.Host
+namespace Shakespokemon.Api.Host
 {
     using Microsoft.Extensions.Hosting;
 

@@ -1,4 +1,4 @@
-namespace Shakespokemon.Host
+namespace Shakespokemon.Api.Host
 {
     public class PokemonDto
     {

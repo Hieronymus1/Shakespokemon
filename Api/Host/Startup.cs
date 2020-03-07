@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using Shakespokemon.DataAccess;
+using Shakespokemon.Api.DataAccess;
+using Shakespokemon.Api.Core;
 using Shakespokemon.Core;
 
-namespace Shakespokemon.Host
+namespace Shakespokemon.Api.Host
 {
     public class Startup
     {

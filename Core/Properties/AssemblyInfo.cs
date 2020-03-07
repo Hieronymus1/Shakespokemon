@@ -1,3 +1,3 @@
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Shakespokemon.DataAccess")]
+[assembly: InternalsVisibleTo("Shakespokemon.Api.DataAccess")]
