@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Shakespokemon.Host</name>
+    </assembly>
+    <members>
+        <member name="M:Shakespokemon.Host.PokemonController.Get(System.String)">
+            <summary>
+            Returns a Shakespearean description of the requested Pokemon.
+            </summary>
+            <param name="name">The name of the Pokemon.</param>
+        </member>
+    </members>
+</doc>
