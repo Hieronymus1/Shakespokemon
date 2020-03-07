@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Shakespokemon.Etl.Console</RootNamespace>
+    <AssemblyName>Shakespokemon.Etl.Console</AssemblyName>
+  </PropertyGroup>
+
+</Project>
