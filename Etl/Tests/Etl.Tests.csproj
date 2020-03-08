@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Core.csproj" />
     <ProjectReference Include="..\Core\Etl.Core.csproj" />    
+    <ProjectReference Include="..\DataAccess\Etl.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

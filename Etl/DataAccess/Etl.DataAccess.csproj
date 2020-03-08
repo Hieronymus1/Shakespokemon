@@ -1,9 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
+ <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>Shakespokemon.Etl.DataAccess</RootNamespace>
     <AssemblyName>Shakespokemon.Etl.DataAccess</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Etl.Core.csproj" />
+  </ItemGroup>
 
 </Project>
