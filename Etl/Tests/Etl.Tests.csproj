@@ -19,7 +19,7 @@
     <Content Include="DataAccess\Http\PokeApiPokemonsPage.json" Link="PokeApiPokemonsPage.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="DataAccess\Http\PokeApiPokemonsLastPage.json" Link="PokeApiPokemonsLastPage.json" CopyToOutputDirectory="PreserveNewest" />    
     <Content Include="DataAccess\Http\FunTranslationShakespeare.json" Link="FunTranslationShakespeare.json" CopyToOutputDirectory="PreserveNewest" />
-
+    <Content Include="DataAccess\Http\PokedexPokemon.html" Link="PokedexPokemon.html" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>
