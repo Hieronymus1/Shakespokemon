@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.IO;
+using System.Linq;
 using Shakespokemon.Etl.DataAccess.Http;
 
 namespace Shakespokemon.Etl.Tests.DataAccess.Http
@@ -18,5 +19,20 @@ namespace Shakespokemon.Etl.Tests.DataAccess.Http
             Assert.AreEqual(expectedCount, actual.Names.Length);
             Assert.AreEqual(expectedNextPage, actual.NextPage?.ToString());
         }       
+
+        [Test, Ignore("Avoid API calls limit by IP")]        
+        public void WhenGetAll_ThenReturnsPokemonNames()
+        {
+            var sut = new PokeApiClient();
+            var expectedCount = 40; // Fetch only 2 pages to avoid daily limit of calls by IP.
+
+            var names = sut.GetAll().Take(expectedCount).ToArray(); 
+            Assert.AreEqual(expectedCount, names.Length);
+            foreach(var name in names)
+            {
+                System.Console.WriteLine(name);
+                Assert.IsFalse(string.IsNullOrWhiteSpace(name));
+            }
+        }
     }
 }

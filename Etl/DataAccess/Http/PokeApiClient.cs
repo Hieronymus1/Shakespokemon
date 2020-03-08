@@ -2,14 +2,48 @@ using System;
 using System.Collections.Generic;
 using Shakespokemon.Core;
 using Newtonsoft.Json.Linq;
+using System.Net.Http;
 
 namespace Shakespokemon.Etl.DataAccess.Http
 {
     internal class PokeApiClient : IPokemonNamesClient
     {
+        private readonly static Uri PokemonUri = new Uri("https://pokeapi.co/api/v2/pokemon/");
+
         public IEnumerable<string> GetAll()
         {
-            throw new NotImplementedException();
+            return GetNames(PokemonUri);
+        }
+
+        private IEnumerable<string> GetNames(Uri url)
+        {
+            string json;
+
+            using(var client = new HttpClient())
+            {
+                var response = client.GetAsync(url).Result;  
+                response.EnsureSuccessStatusCode();  
+  
+                using (var content = response.Content)  
+                {  
+                    json = response.Content.ReadAsStringAsync().Result;  
+                }  
+            }
+
+            var page = ParsePokemonsPage(json);
+            foreach(var name in page.Names)
+            {
+                yield return name;
+            }
+
+            if(page.NextPage != null)
+            {   
+                var names = GetNames(page.NextPage);
+                foreach(var name in page.Names)
+                {
+                    yield return name;
+                }
+            }
         }
 
         public class PokemonsPage
