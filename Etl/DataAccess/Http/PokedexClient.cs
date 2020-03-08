@@ -1,6 +1,8 @@
 using System;
-using System.Linq;
+using System.Net.Http;
+using System.Web;
 using HtmlAgilityPack;
+using System.Text.RegularExpressions;
 
 namespace Shakespokemon.Etl.DataAccess.Http
 {
@@ -8,9 +10,19 @@ namespace Shakespokemon.Etl.DataAccess.Http
     {
         public string GetDescription(string name)
         {
-            // Get pokemon description by name: https://www.pokemon.com/us/pokedex/{name}
-                
-            throw new NotImplementedException();
+            using(var client = new HttpClient())
+            {
+                var url = new Uri($"https://www.pokemon.com/us/pokedex/{name}");;
+                var response = client.GetAsync(url).Result;  
+                response.EnsureSuccessStatusCode();  
+  
+                using (var content = response.Content)  
+                {  
+                    var html = response.Content.ReadAsStringAsync().Result;  
+
+                    return ParseDescription(html);
+                }  
+            }
         }
 
         public static string ParseDescription(string html)
@@ -18,13 +30,22 @@ namespace Shakespokemon.Etl.DataAccess.Http
             var page = new HtmlDocument();
             page.LoadHtml(html);
 
-            var node = page.DocumentNode.SelectSingleNode("//p[contains(@class, 'pokemon-story__body')]/span[1]");
+            var node = page.DocumentNode.SelectSingleNode("//div[contains(@class, 'version-descriptions')]/p[1]");
             if(node != null)
-            {
-                return node.InnerText.Trim();
+            {               
+                return Sanitize(node.InnerText);
             }
 
-            throw new InvalidOperationException("Could not find element with class 'pokemon-story__body' in document.");
+            throw new InvalidOperationException("Could not find element with class 'version-descriptions' in document.");
+        }
+
+        private static string Sanitize(string rawText)
+        {
+            var text = rawText.Replace('\n', ' ');
+            text = HttpUtility.HtmlDecode(rawText);
+            text = Regex.Replace(text, @"\s+", " "); // Removes extra blank spaces.
+
+            return text.Trim();
         }
     }
 }
