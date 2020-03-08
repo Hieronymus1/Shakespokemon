@@ -20,7 +20,7 @@
             "type": "coreclr",
             "request": "launch",        
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Etl/Host/bin/Debug/netcoreapp3.1/Shakespokemon.Etl.Console.dll",            
+            "program": "${workspaceFolder}/Etl/Console/bin/Debug/netcoreapp3.1/Shakespokemon.Etl.Console.dll",            
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",

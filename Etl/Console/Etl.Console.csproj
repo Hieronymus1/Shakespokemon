@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\Etl.DataAccess.csproj" />
     <ProjectReference Include="..\Core\Etl.Core.csproj" />
+    <ProjectReference Include="..\..\Api\DataAccess\Api.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
