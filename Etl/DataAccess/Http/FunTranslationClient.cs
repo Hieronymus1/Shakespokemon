@@ -16,15 +16,14 @@ namespace Shakespokemon.Etl.DataAccess.Http
 
             using(var client = new HttpClient())
             {
-                var textContent = new KeyValuePair<string, string>("text", text);
-                using(var content = new FormUrlEncodedContent(new[] { textContent }))
-                {
-                    var response = client.PostAsync(Uri, content).Result;  
-                    response.EnsureSuccessStatusCode();  
-                    var json = response.Content.ReadAsStringAsync().Result;  
+                var request = new HttpRequestMessage(HttpMethod.Post, Uri);
+                request.Content = new StringContent($"text={text}");
 
-                    return ParseTranslation(json);
-                }
+                var response = client.SendAsync(request).Result;  
+                response.EnsureSuccessStatusCode();  
+                var json = response.Content.ReadAsStringAsync().Result;  
+
+                return ParseTranslation(json);
             }
         }
 

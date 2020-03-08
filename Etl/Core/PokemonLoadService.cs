@@ -2,6 +2,9 @@ namespace Shakespokemon.Etl.Core
 {
     public interface IPokemonLoadService
     {
+        /// <summary>
+        /// Extract Pokemons and transform their description in a Shakespearean style before to load the results in local database.
+        /// </summary>
         void Process();
     }
 
@@ -15,7 +18,7 @@ namespace Shakespokemon.Etl.Core
             _source = source;
             _destination = destination;
         }
-
+        
         public void Process()
         {
             var pokemons = _source.GetAll();

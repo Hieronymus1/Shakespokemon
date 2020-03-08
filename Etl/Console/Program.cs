@@ -1,6 +1,4 @@
-﻿
-
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Shakespokemon.Etl.Core;
 using Shakespokemon.Etl.DataAccess;
 using Shakespokemon.Etl.DataAccess.Http;
