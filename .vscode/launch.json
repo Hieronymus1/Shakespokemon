@@ -5,11 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "name": ".NET Core Launch (API)",
             "type": "coreclr",
             "request": "launch",        
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Host/bin/Debug/netcoreapp3.1/Shakespokemon.Host.dll",            
+            "program": "${workspaceFolder}/Api/Host/bin/Debug/netcoreapp3.1/Shakespokemon.Api.Host.dll",            
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": true
+        },
+        {
+            "name": ".NET Core Launch (ETL)",
+            "type": "coreclr",
+            "request": "launch",        
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/Etl/Host/bin/Debug/netcoreapp3.1/Shakespokemon.Etl.Console.dll",            
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
