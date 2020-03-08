@@ -12,6 +12,14 @@ namespace Shakespokemon.Core
             }
         }
 
+        public static void IsNotNull(object value, string argumentName)
+        {
+            if(value == null)
+            {
+                throw new ArgumentNullException(nameof(argumentName));
+            }
+        }
+
         public static void IsValid(bool condition, string message)
         {
             if(!condition)

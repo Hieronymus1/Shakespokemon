@@ -1,0 +1,23 @@
+{
+    "count": 964,
+    "next": null,
+    "previous": "https://pokeapi.co/api/v2/pokemon/?offset=49&limit=20",
+    "results": [
+        {
+            "name": "pidgeotto",
+            "url": "https://pokeapi.co/api/v2/pokemon/17/"
+        },
+        {
+            "name": "pidgeot",
+            "url": "https://pokeapi.co/api/v2/pokemon/18/"
+        },
+        {
+            "name": "rattata",
+            "url": "https://pokeapi.co/api/v2/pokemon/19/"
+        },
+        {
+            "name": "raticate",
+            "url": "https://pokeapi.co/api/v2/pokemon/20/"
+        }
+    ]
+}

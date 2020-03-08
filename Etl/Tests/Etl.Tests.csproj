@@ -16,6 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="DataAccess\Http\PokeApiPokemonsPage.json" Link="PokeApiPokemonsPage.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="DataAccess\Http\PokeApiPokemonsLastPage.json" Link="PokeApiPokemonsLastPage.json" CopyToOutputDirectory="PreserveNewest" />    
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Core\Core.csproj" />
     <ProjectReference Include="..\Core\Etl.Core.csproj" />    
     <ProjectReference Include="..\DataAccess\Etl.DataAccess.csproj" />
