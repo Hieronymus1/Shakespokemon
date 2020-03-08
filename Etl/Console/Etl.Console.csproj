@@ -7,4 +7,15 @@
     <AssemblyName>Shakespokemon.Etl.Console</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess\Etl.DataAccess.csproj" />
+    <ProjectReference Include="..\Core\Etl.Core.csproj" />
+  </ItemGroup>
+
 </Project>
