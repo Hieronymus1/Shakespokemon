@@ -17,7 +17,7 @@ namespace Shakespokemon.Api.Host
             {
                 config.SwaggerDoc("v1", new OpenApiInfo { Title = "Shakespokemon API" });
 
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, "Shakespokemon.Host.XML");
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, "Shakespokemon.Api.Host.XML");
                 config.IncludeXmlComments(xmlPath);
             });
 
