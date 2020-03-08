@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Web;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
+using Shakespokemon.Core;
 
 namespace Shakespokemon.Etl.DataAccess.Http
 {
@@ -10,6 +11,8 @@ namespace Shakespokemon.Etl.DataAccess.Http
     {
         public string GetDescription(string name)
         {
+            Argument.IsNotNullOrWhitespace(name, nameof(name));
+
             using(var client = new HttpClient())
             {
                 var url = new Uri($"https://www.pokemon.com/us/pokedex/{name}");;
@@ -36,7 +39,7 @@ namespace Shakespokemon.Etl.DataAccess.Http
                 return Sanitize(node.InnerText);
             }
 
-            throw new InvalidOperationException("Could not find element with class 'version-descriptions' in document.");
+            throw new InvalidOperationException("Could not find Pokemon description in document.");
         }
 
         private static string Sanitize(string rawText)

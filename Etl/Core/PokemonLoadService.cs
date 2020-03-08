@@ -7,23 +7,23 @@ namespace Shakespokemon.Etl.Core
 
     public class PokemonLoadService : IPokemonLoadService
     {
-        private IPokemonSourceRepository _sourceRepository;
-        private IPokemonDestinationRepository _destinationRepository;
+        private IPokemonSourceRepository _source;
+        private IPokemonDestinationRepository _destination;
 
-        public PokemonLoadService(IPokemonSourceRepository sourceRepository, IPokemonDestinationRepository destinationRepository)
+        public PokemonLoadService(IPokemonSourceRepository source, IPokemonDestinationRepository destination)
         {
-            _sourceRepository = sourceRepository;
-            _destinationRepository = destinationRepository;
+            _source = source;
+            _destination = destination;
         }
 
         public void Process()
         {
-            var pokemons = _sourceRepository.GetAll();
+            var pokemons = _source.GetAll();
             foreach(var pokemon in pokemons)
             {
-                if(!_destinationRepository.TryFind(pokemon.Name, out var _))
+                if(!_destination.TryFind(pokemon.Name, out var _))
                 {
-                    _destinationRepository.Add(pokemon);
+                    _destination.Add(pokemon);
                 }
             }
         }

@@ -11,6 +11,8 @@ namespace Shakespokemon.Api.DataAccess
 
         public void Add(Pokemon item)
         {
+            Argument.IsNotNull(item, nameof(item));
+
             var document = new BsonDocument();
             document["name"] = item.Name;
             document["description"] = item.Description;

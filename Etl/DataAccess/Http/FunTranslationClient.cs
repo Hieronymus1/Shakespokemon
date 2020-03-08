@@ -2,6 +2,7 @@ using System;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Collections.Generic;
+using Shakespokemon.Core;
 
 namespace Shakespokemon.Etl.DataAccess.Http
 {
@@ -11,6 +12,8 @@ namespace Shakespokemon.Etl.DataAccess.Http
 
         public string GetTranslation(string text)
         {
+            Argument.IsNotNullOrWhitespace(text, nameof(text));
+
             using(var client = new HttpClient())
             {
                 var textContent = new KeyValuePair<string, string>("text", text);
@@ -25,7 +28,7 @@ namespace Shakespokemon.Etl.DataAccess.Http
             }
         }
 
-        public static string ParseTranslation(string json)
+        internal static string ParseTranslation(string json)
         {
             var document = JToken.Parse(json);
             var translatedToken = document.SelectToken("$..translated");
