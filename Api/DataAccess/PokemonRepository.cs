@@ -1,10 +1,10 @@
-using Shakespokemon.Api.Core;
+using Shakespokemon.Etl.Core;
 using Shakespokemon.Core;
 using LiteDB;
 
 namespace Shakespokemon.Api.DataAccess
 {
-    public class PokemonRepository : IPokemonRepository
+    public class PokemonRepository : IPokemonRepository, IPokemonDestinationRepository
     {
         private const string DbName = "Shakespokemon.db";
         private const string CollectionName = "pokemons";

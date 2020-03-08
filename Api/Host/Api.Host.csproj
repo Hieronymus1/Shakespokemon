@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Core.csproj" />
-    <ProjectReference Include="..\Core\Api.Core.csproj" />
     <ProjectReference Include="..\DataAccess\Api.DataAccess.csproj" />
   </ItemGroup>
 

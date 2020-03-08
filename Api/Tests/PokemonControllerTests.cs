@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Net;
 using System.Net.Http;
 using Shakespokemon.Core;
-using Shakespokemon.Api.Core;
 using Shakespokemon.Api.Host;
 using Newtonsoft.Json;
 

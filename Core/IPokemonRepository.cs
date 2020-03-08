@@ -1,7 +1,5 @@
-﻿namespace Shakespokemon.Api.Core
+﻿namespace Shakespokemon.Core
 {
-    using Shakespokemon.Core;
-
     public interface IPokemonRepository
     {
         bool TryFind(string name, out Pokemon item);

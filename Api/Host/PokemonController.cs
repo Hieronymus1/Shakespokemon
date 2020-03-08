@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Shakespokemon.Api.Core;
 using Shakespokemon.Core;
 
 namespace Shakespokemon.Api.Host
