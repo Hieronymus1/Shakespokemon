@@ -20,11 +20,12 @@ namespace Shakespokemon.Etl.DataAccess.Http
             {
                 var url = new Uri($"https://www.pokemon.com/us/pokedex/{name}");;
                 var response = client.GetAsync(url).Result; 
-                if(response.StatusCode != HttpStatusCode.OK)
+                if(response.StatusCode == HttpStatusCode.NotFound)
                 {
                     return false;
                 }  
   
+                response.EnsureSuccessStatusCode();
                 using (var content = response.Content)  
                 {  
                     var html = response.Content.ReadAsStringAsync().Result;  
@@ -58,9 +59,9 @@ namespace Shakespokemon.Etl.DataAccess.Http
         {
             var text = rawText.Replace('\n', ' ');
             text = HttpUtility.HtmlDecode(rawText);
-            text = Regex.Replace(text, @"\s+", " "); // Removes extra blank spaces.
+            text = Regex.Replace(text, @"\s+", " ").Trim(); // Removes extra blank spaces.
 
-            return text.Trim();
+            return text;
         }
     }
 }

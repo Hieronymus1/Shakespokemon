@@ -24,12 +24,11 @@ namespace Shakespokemon.Etl.DataAccess.Http
                 string json;
                 using(var client = new HttpClient())
                 {
-                    var response = client.GetAsync(url).Result;  
-                    response.EnsureSuccessStatusCode();
-                    using (var content = response.Content)  
-                    {  
+                    using(var response = client.GetAsync(url).Result)
+                    {
+                        response.EnsureSuccessStatusCode();
                         json = response.Content.ReadAsStringAsync().Result;  
-                    } 
+                    }
                 }
 
                 var page = ParsePokemonsPage(json);
