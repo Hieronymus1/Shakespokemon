@@ -20,7 +20,7 @@ namespace Shakespokemon.Etl.Tests.DataAccess.Http
             Assert.AreEqual(expectedNextPage, actual.NextPage?.ToString());
         }       
 
-        [Test, Ignore("Avoid API calls limit by IP")]        
+        [Test]        
         public void WhenGetAll_ThenReturnsPokemonNames()
         {
             var sut = new PokeApiClient();

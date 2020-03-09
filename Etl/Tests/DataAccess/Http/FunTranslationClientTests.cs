@@ -18,7 +18,7 @@ namespace Shakespokemon.Etl.Tests.DataAccess.Http
             Assert.AreEqual(expected, actual);
         }
 
-        [Test, Ignore("Avoid API calls limit by IP")]
+        [Test]
         public void GivenText_WhenGetDescription_ThenReturnsTranslation()
         {
             var sut = new FunTranslationClient();
