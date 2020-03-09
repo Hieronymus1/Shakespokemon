@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Shakespokemon.Etl.Core;
 using Shakespokemon.Etl.DataAccess;
 using Shakespokemon.Etl.DataAccess.Http;
@@ -17,7 +18,7 @@ namespace Shakespokemon.Etl.Console
                 .AddSingleton<IPokemonSourceRepository, PokemonSourceRepository>()
                 .AddSingleton<IPokemonDestinationRepository, PokemonRepository>()
                 .AddSingleton<IPokemonLoadService, PokemonLoadService>()
-                .AddLogging()
+                .AddLogging(config => config.AddConsole())
                 .BuildServiceProvider();
 
             var service = serviceProvider.GetRequiredService<IPokemonLoadService>();

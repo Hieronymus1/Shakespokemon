@@ -1,9 +1,9 @@
-using System;
 using System.Linq;
 using NUnit.Framework;
 using Moq;
 using Shakespokemon.Etl.DataAccess;
 using AutoFixture;
+using Microsoft.Extensions.Logging;
 
 namespace Shakespokemon.Etl.Tests.DataAccess
 {
@@ -26,7 +26,9 @@ namespace Shakespokemon.Etl.Tests.DataAccess
             translationClientMock.Setup(x => x.GetTranslation(It.IsAny<string>()))
                 .Returns<string>(text => $"{text} translation");
 
-            var sut = new PokemonSourceRepository(namesClientMock.Object, descriptionClientMock.Object, translationClientMock.Object);
+            var sut = new PokemonSourceRepository(namesClientMock.Object, descriptionClientMock.Object, 
+                translationClientMock.Object, new Mock<ILogger<PokemonSourceRepository>>().Object);
+
             var actualItems = sut.GetAll().ToArray();
 
             Assert.AreEqual(expectedNames.Length, actualItems.Count());
