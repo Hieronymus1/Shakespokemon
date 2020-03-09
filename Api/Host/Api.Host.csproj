@@ -4,15 +4,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Shakespokemon.Api.Host</RootNamespace>
     <AssemblyName>Shakespokemon.Api.Host</AssemblyName>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile>Shakespokemon.Api.Host.XML</DocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Update="Shakespokemon.Api.Host.XML">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>  
+    <Content Include="..\..\Shakespokemon.db" Link="Shakespokemon.db" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Shakespokemon.Api.Host.XML" Link="Shakespokemon.Api.Host.XML" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

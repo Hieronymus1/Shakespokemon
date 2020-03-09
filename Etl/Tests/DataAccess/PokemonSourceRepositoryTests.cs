@@ -16,8 +16,12 @@ namespace Shakespokemon.Etl.Tests.DataAccess
             var namesClientMock = new Mock<IPokemonNamesClient>();
             namesClientMock.Setup(x => x.GetAll()).Returns(expectedNames);
             var descriptionClientMock = new Mock<IPokemonDescriptionClient>();
-            descriptionClientMock.Setup(x => x.GetDescription(It.Is<string>(name => expectedNames.Contains(name))))
-                .Returns<string>(name => $"{name} description");
+            foreach(var name in expectedNames)
+            {
+                var description = $"{name} description";
+                descriptionClientMock.Setup(x => x.TryGet(name, out description)).Returns(true);
+            }
+                
             var translationClientMock = new Mock<IShakespeareTranslationClient>();
             translationClientMock.Setup(x => x.GetTranslation(It.IsAny<string>()))
                 .Returns<string>(text => $"{text} translation");

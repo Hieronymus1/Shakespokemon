@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Web;
 using HtmlAgilityPack;
@@ -9,37 +10,48 @@ namespace Shakespokemon.Etl.DataAccess.Http
 {
     internal class PokedexClient : IPokemonDescriptionClient
     {
-        public string GetDescription(string name)
+        public bool TryGet(string name, out string description)
         {
             Argument.IsNotNullOrWhitespace(name, nameof(name));
+
+            description = null;
 
             using(var client = new HttpClient())
             {
                 var url = new Uri($"https://www.pokemon.com/us/pokedex/{name}");;
-                var response = client.GetAsync(url).Result;  
-                response.EnsureSuccessStatusCode();  
+                var response = client.GetAsync(url).Result; 
+                if(response.StatusCode != HttpStatusCode.OK)
+                {
+                    return false;
+                }  
   
                 using (var content = response.Content)  
                 {  
                     var html = response.Content.ReadAsStringAsync().Result;  
-
-                    return ParseDescription(html);
+                    if(TryParse(html, out description))
+                    {
+                        return true;
+                    }
                 }  
             }
+
+            return false;
         }
 
-        public static string ParseDescription(string html)
+        public static bool TryParse(string html, out string description)
         {
+            description = null;
+
             var page = new HtmlDocument();
             page.LoadHtml(html);
 
             var node = page.DocumentNode.SelectSingleNode("//div[contains(@class, 'version-descriptions')]/p[1]");
             if(node != null)
             {               
-                return Sanitize(node.InnerText);
+                description = Sanitize(node.InnerText);
             }
 
-            throw new InvalidOperationException("Could not find Pokemon description in document.");
+            return description != null;
         }
 
         private static string Sanitize(string rawText)

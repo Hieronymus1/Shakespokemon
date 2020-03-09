@@ -12,8 +12,7 @@ namespace Shakespokemon.Etl.Tests.DataAccess.Http
             var html = File.ReadAllText("PokedexPokemon.html");
             var expected = "Charizard flies around the sky in search of powerful opponents. It breathes fire of such great heat that it melts anything. However, it never turns its fiery breath on any opponent weaker than itself.";
 
-            var actual = PokedexClient.ParseDescription(html);
-
+            Assert.True(PokedexClient.TryParse(html, out var actual));
             Assert.AreEqual(expected, actual);
         }
 
@@ -23,7 +22,7 @@ namespace Shakespokemon.Etl.Tests.DataAccess.Http
             var sut = new PokedexClient();
             var expected = "Squirtle's shell is not merely used for protection. The shell's rounded shape and the grooves on its surface help minimize resistance in water, enabling this Pokémon to swim at high speeds.";
 
-            var actual = sut.GetDescription("squirtle");
+            Assert.IsTrue(sut.TryGet("squirtle", out var actual));
 
             Assert.AreEqual(expected, actual);
         }

@@ -1,7 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
-using System.Collections.Generic;
 using Shakespokemon.Core;
 
 namespace Shakespokemon.Etl.DataAccess.Http
@@ -16,14 +16,18 @@ namespace Shakespokemon.Etl.DataAccess.Http
 
             using(var client = new HttpClient())
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, Uri);
-                request.Content = new StringContent($"text={text}");
+                var request = new HttpRequestMessage(HttpMethod.Post, Uri);                
+                var textContent = new KeyValuePair<string, string>("text", text);
+                using(var content = new FormUrlEncodedContent(new []{textContent}))
+                {
+                    request.Content = content;
+                    var response = client.SendAsync(request).Result;  
+                    response.EnsureSuccessStatusCode();  
 
-                var response = client.SendAsync(request).Result;  
-                response.EnsureSuccessStatusCode();  
-                var json = response.Content.ReadAsStringAsync().Result;  
+                    var json = response.Content.ReadAsStringAsync().Result;  
 
-                return ParseTranslation(json);
+                    return ParseTranslation(json);
+                }
             }
         }
 

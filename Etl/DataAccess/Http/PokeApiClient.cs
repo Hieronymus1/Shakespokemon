@@ -10,40 +10,35 @@ namespace Shakespokemon.Etl.DataAccess.Http
     {
         private readonly static Uri PokemonUri = new Uri("https://pokeapi.co/api/v2/pokemon/");
 
-        public IEnumerable<string> GetAll()
+        public string[] GetAll()
         {
             return GetNames(PokemonUri);
         }
 
-        private IEnumerable<string> GetNames(Uri url)
+        private string[] GetNames(Uri url)
         {
-            string json;
+            var items = new List<string>();
 
-            using(var client = new HttpClient())
+            while(url != null)
             {
-                var response = client.GetAsync(url).Result;  
-                response.EnsureSuccessStatusCode();  
-  
-                using (var content = response.Content)  
-                {  
-                    json = response.Content.ReadAsStringAsync().Result;  
-                }  
-            }
-
-            var page = ParsePokemonsPage(json);
-            foreach(var name in page.Names)
-            {
-                yield return name;
-            }
-
-            if(page.NextPage != null)
-            {   
-                var names = GetNames(page.NextPage);
-                foreach(var name in page.Names)
+                string json;
+                using(var client = new HttpClient())
                 {
-                    yield return name;
+                    var response = client.GetAsync(url).Result;  
+                    response.EnsureSuccessStatusCode();
+                    using (var content = response.Content)  
+                    {  
+                        json = response.Content.ReadAsStringAsync().Result;  
+                    } 
                 }
+
+                var page = ParsePokemonsPage(json);
+                items.AddRange(page.Names);
+            
+                url = page.NextPage;
             }
+            
+            return items.ToArray();
         }
 
         public class PokemonsPage

@@ -22,10 +22,12 @@ namespace Shakespokemon.Etl.DataAccess
         {
             foreach(var name in _namesClient.GetAll())
             {
-                var description = _descriptionClient.GetDescription(name);
-                var translation = _translationClient.GetTranslation(description);
+                if(_descriptionClient.TryGet(name, out var description))
+                {
+                    var translation = _translationClient.GetTranslation(description);
 
-                yield return new Pokemon(name, translation);
+                    yield return new Pokemon(name, translation);
+                }
             }
         }
     }

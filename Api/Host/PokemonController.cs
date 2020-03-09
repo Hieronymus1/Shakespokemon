@@ -21,7 +21,9 @@ namespace Shakespokemon.Api.Host
         {
             if(_repository.TryFind(name, out var item))
             {
-                return Ok(item); 
+                var dto = new PokemonDto { Name = item.Name, Description = item.Description };
+
+                return Ok(dto); 
             }
             
             return NotFound($"Could not find pokemon with name '{name}'.");

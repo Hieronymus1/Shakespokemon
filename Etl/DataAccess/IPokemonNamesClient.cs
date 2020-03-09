@@ -4,6 +4,6 @@ namespace Shakespokemon.Etl.DataAccess
 {
     public interface IPokemonNamesClient
     {
-        public IEnumerable<string> GetAll();
+        public string[] GetAll();
     }       
 }
