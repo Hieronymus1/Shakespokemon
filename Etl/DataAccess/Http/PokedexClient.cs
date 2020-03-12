@@ -57,8 +57,7 @@ namespace Shakespokemon.Etl.DataAccess.Http
 
         private static string Sanitize(string rawText)
         {
-            var text = rawText.Replace('\n', ' ');
-            text = HttpUtility.HtmlDecode(rawText);
+            var text = HttpUtility.HtmlDecode(rawText);
             text = Regex.Replace(text, @"\s+", " ").Trim(); // Removes extra blank spaces.
 
             return text;
