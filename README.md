@@ -13,7 +13,7 @@ The service will listen on [http://localhost:8080](http://localhost:8080).
 **Run with dotnet CLI:**
 
 ```
-$ dotnet run .\Api\Host\Api.Host.csproj
+$ dotnet run --project Api/Host/Api.Host.csproj
 ```
 
 The service will listen on [http://localhost:5000](http://localhost:5000) or the port numbers assigned to the ASPNETCORE_URLS environment variable.
