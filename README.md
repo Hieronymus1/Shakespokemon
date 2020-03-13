@@ -26,7 +26,7 @@ The solution contains 2 processes for the distinct data-flows including the API 
 
 The API namespace only contains the dependencies required to run the service including:
 
-* Api.DataAccess.csproj to implement the required [repositories](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) to access the database.
+* Api.DataAccess.csproj to implement the required [repository](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) to access the database.
 * Api.Host.csproj to start the [WebHost](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/web-host?view=aspnetcore-3.1).
 
 ## ETL
@@ -34,7 +34,7 @@ The API namespace only contains the dependencies required to run the service inc
 The ETL namespace only contains the dependencies to extract, transform and load the baseline data including:
 
 * Etl.Core.csproj to keep the application model agnostic of infrastructure dependencies.
-* Etl.DataAccess to implement the required [repository](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) to access external data-sources as well as the API database.
+* Etl.DataAccess to implement the required [repositories](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) to access external data-sources as well as the API database.
 * Etl.Host.csproj to run the console process.
 
 This separation of concerns in different vertical-silos was done to:
