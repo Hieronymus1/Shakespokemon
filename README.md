@@ -37,7 +37,7 @@ The ETL namespace only contains the dependencies to extract, transform and load 
 * Etl.DataAccess to implement the [repository](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) to extract the source data with HttpClients.
 * Etl.Host.csproj to run the console process.
 
-This separation of concerns in different [vertical-slices](http://www.dhrubo.net/2017/04/microservices-vertical-slicing.html) was done to:
+This separation of concerns in different [vertical-slices](https://en.wikipedia.org/wiki/Vertical_slice) was done to:
 
 1. Avoid external depedencies because the required data is quite static and no real-time updates are required (new Pokémons are not released every day) in order to:
     * Provide better API response time with preloaded data.
